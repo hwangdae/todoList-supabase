@@ -11,14 +11,13 @@ import {
   getTodoByTitleKeyword,
 } from "../../api/todoList";
 import SearchSummary from "./SearchSummary";
-import { TodoListType } from "../../types/Todo";
 import useDebounce from "../../hook/useDebouce";
 
 const Search = () => {
   const [search, setSearch] = useRecoilState(searchState);
   const [searchToggle, setSearchToggle] = useRecoilState(toggleState);
-  const [searchData, setSearchData] = useRecoilState(searchkeyword);
-  const debouncedQuery = useDebounce(search, 2000);
+  const [, setSearchData] = useRecoilState(searchkeyword);
+  const debouncedQuery = useDebounce(search, 500);
 
   const SearchSummaryOpen = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,6 +31,7 @@ const Search = () => {
     };
     if (debouncedQuery) {
       fetchData(search);
+      console.log("데이터패치")
     }
   },[debouncedQuery])
   

@@ -5,6 +5,10 @@ const getTodoData = async () => {
   const { data } = await supabase.from("todoList").select();
   return data;
 };
+const getTodoDetailData = async (id:string | undefined) => {
+  const {data} = await supabase.from("todoList").select().eq('id',id)
+  return data
+}
 
 const writeTodoData = async (newTodo: TodoType) => {
   await supabase.from("todoList").insert(newTodo);
@@ -25,4 +29,4 @@ const getTodoByBodyKeyword = async(keyword:string) => {
   return searchBodyData;
 }
 
-export { getTodoData, writeTodoData, deleteTodoData,getTodoByTitleKeyword ,getTodoByBodyKeyword};
+export { getTodoData,getTodoDetailData, writeTodoData, deleteTodoData,getTodoByTitleKeyword ,getTodoByBodyKeyword};
