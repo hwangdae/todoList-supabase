@@ -5,7 +5,6 @@ import supabase from "../lib/supabaseClient";
 
 const TodoForMap = ({ id, title, body }: Omit<TodoListType, "created_at">) => {
   const deleteTodoHandler = async () => {
-    console.log(id);
     await supabase.from("todoList").delete().eq("id", id);
   };
   return (
@@ -25,14 +24,17 @@ const S = {
   TodoWrap: styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 20px;
     border: solid 1px #3fc08a;
     border-radius: 4px;
     margin-bottom: 16px;
   `,
-  TodoTextWrap: styled.div``,
+  TodoTextWrap: styled.div`
+  /* padding: 10px 0px; */
+  `,
   TodoTitle: styled.h1`
     font-size: 28px;
+    margin-bottom: 10px;
   `,
   DeleteButton:styled.button`
     cursor: pointer;

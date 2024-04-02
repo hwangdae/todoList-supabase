@@ -7,8 +7,13 @@ import { TodoListType } from "../types/Todo";
 import TodoTitle from "./Header/TodoListTitle";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { searchState, searchkeyword } from "../globalState/recoil";
 
 const TodoList = () => {
+
+  // const search = useRecoilValue(searchState)
+
 
   const {
     data: todoList,
@@ -27,7 +32,6 @@ const TodoList = () => {
   if (isError) {
     console.log(isError);
   }
-
 
   return (
     <S.TodoListWrap>
