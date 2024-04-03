@@ -18,9 +18,11 @@ const TodoDetail = () => {
     queryKey: ["todoList"],
     queryFn: () => getTodoData(),
   });
+
   const todo = todoList?.find((todo) => {
     return todo.id == id;
   });
+  
   return (
     <div>
       <h1>{todo?.title}</h1>

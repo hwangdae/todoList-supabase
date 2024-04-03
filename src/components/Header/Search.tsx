@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import {
@@ -12,6 +12,7 @@ import {
 } from "../../api/todoList";
 import SearchSummary from "./SearchSummary";
 import useDebounce from "../../hook/useDebouce";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [search, setSearch] = useRecoilState(searchState);
@@ -19,9 +20,13 @@ const Search = () => {
   const [, setSearchData] = useRecoilState(searchkeyword);
   const debouncedQuery = useDebounce(search, 500);
 
-  const SearchSummaryOpen = async (e: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate()
+
+
+  const allSearchHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // setSearchToggle(false);
+    setSearchToggle(false);
+    navigate(`/search/all?=${search}`)
   };
   useEffect(()=>{
     const fetchData = async (keyword: string) => {
@@ -31,28 +36,26 @@ const Search = () => {
     };
     if (debouncedQuery) {
       fetchData(search);
-      console.log("데이터패치")
     }
   },[debouncedQuery])
   
-
   const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
-  console.log(search)
+
   return (
     <S.SearchWrap>
-      <form onSubmit={(e) => SearchSummaryOpen(e)}>
+      <form onSubmit={(e) => allSearchHandler(e)}>
         <S.SearchInput
           onFocus={() => {
             setSearchToggle(true);
-            // console.log("test");
           }}
           onBlur={() => {
             setTimeout(() => {
               setSearchToggle(false);
             }, 200);
           }}
+          placeholder="게시물을 검색하세요."
           value={search}
           onChange={searchHandler}
         ></S.SearchInput>
@@ -72,14 +75,12 @@ const S = {
   `,
   SearchForm: styled.form``,
   SearchInput: styled.input`
-    width: 300px;
-    padding: 5px 5px;
+    width: 400px;
+    padding: 8px 5px;
     border: solid 1px #999;
     border-radius: 4px;
     outline: none;
     transition: 0.3s;
-    &:focus {
-      width: 500px;
-    }
+
   `,
 };

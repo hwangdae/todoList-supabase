@@ -5,6 +5,7 @@ import TodoListPage from "../pages/TodoListPage";
 import WriteTodoPage from "../pages/WriteTodoPage";
 import Layout from "../layout/Layout";
 import TodoDetailPage from "../pages/TodoDetailPage";
+import SearchResultPage from "../pages/SearchResultPage";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
           <Route path="/" element={<TodoListPage />} />
           <Route path="/writeTodo" element={<WriteTodoPage />} />
           <Route path="/todo/:id" element={<TodoDetailPage />} />
+          <Route path="/search/:type" element={<SearchResultPage/>}/>
         </Route>
       </Routes>
     </>
