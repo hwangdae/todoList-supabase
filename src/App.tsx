@@ -13,13 +13,14 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <RecoilRoot>
+
     <QueryClientProvider client={queryClient}>
+          <RecoilRoot>
       <BrowserRouter>
         <Router />
       </BrowserRouter>
+      </RecoilRoot>
     </QueryClientProvider>
-    </RecoilRoot>
   );
 }
 

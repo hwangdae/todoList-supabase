@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { writeTodoData } from "../api/todoList";
-// import useTodo from "../hook/useTodo";
+import useTodo from "../hook/useTodo";
+import { TodoType } from "../types/Todo";
 
 
 const TodoListForm = () => {
@@ -18,7 +19,7 @@ const TodoListForm = () => {
     }
     writeTodoData(newTodo)
     navigate('/')
-    // writeTodoMutate.mutate(newTodo)
+    // writeTodoMutate.mutate(newTodo as any)
     setTitle("");
     setBody("");
 

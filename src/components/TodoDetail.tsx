@@ -19,14 +19,14 @@ const TodoDetail = () => {
     queryFn: () => getTodoData(),
   });
 
-  const todo = todoList?.find((todo) => {
-    return todo.id == id;
-  });
+  // const todo = todoList?.find((todo) => {
+  //   return todo.id == id;
+  // });
   
   return (
     <div>
-      <h1>{todo?.title}</h1>
-      <h2>{todo?.body}</h2>
+      {/* <h1>{todo?.title}</h1>
+      <h2>{todo?.body}</h2> */}
     </div>
   );
 };

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@supabase/supabase-js": "^2.41.1",
-    "@tanstack/react-query": "^5.28.9",
+    "@supabase/supabase-js": "^2.32.0",
+    "@tanstack/react-query": "^4.32.6",
     "@tanstack/react-query-devtools": "^5.28.10",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -16,6 +16,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.8.1",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.7",

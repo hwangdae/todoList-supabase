@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { UseMutationOptions, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteTodoData, writeTodoData } from "../api/todoList";
 import { TodoListType, TodoType } from "../types/Todo";
 
@@ -7,11 +7,11 @@ const useTodo = () => {
 
   const success = {
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["todoList"] });
+      queryClient.invalidateQueries({ queryKey: ['todoList'] });
     },
   };
 
-  // const writeTodoMutate = useMutation<void, Error, TodoType, unknown>(
+  // const writeTodoMutate = useMutation(
   //   writeTodoData,
   //   success
   // );
